@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lidar-sdk"
+version = "0.1.0"
+description = "Телеметрия продуктов giga-brdg → lidar (web/telegram/ai/sql, fail-open)"
+requires-python = ">=3.12"
+dependencies = ["httpx>=0.27"]
+
+[project.optional-dependencies]
+# обёртки импортируют свою библиотеку лениво; продукт обычно уже имеет нужные пакеты
+fastapi = ["fastapi"]
+telegram = ["python-telegram-bot>=22"]
+sqlalchemy = ["SQLAlchemy>=2"]
+ai = ["anthropic"]
+
+[tool.setuptools.packages.find]
+include = ["lidar_sdk*"]
