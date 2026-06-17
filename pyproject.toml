@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lidar-sdk"
-version = "0.1.0"
+version = "0.2.0"
 description = "Телеметрия продуктов giga-brdg → lidar (web/telegram/ai/sql, fail-open)"
 requires-python = ">=3.12"
 dependencies = ["httpx>=0.27"]

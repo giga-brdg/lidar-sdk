@@ -18,6 +18,10 @@ from dataclasses import dataclass
 # Приёмник lidar режет пачку до 1000 записей — не шлём больше за раз.
 _RECEIVER_CAP = 1000
 
+# Адрес lidar-web по умолчанию (railway-домен с валидным TLS) — чтобы продукту не задавать
+# LIDAR_INGEST_URL вручную. Переопределяется env LIDAR_INGEST_URL при необходимости.
+_DEFAULT_URL = "https://lidar-production-c6f6.up.railway.app"
+
 
 def _as_bool(value: str | None, default: bool) -> bool:
     if value is None:
@@ -52,7 +56,7 @@ class LidarConfig:
 
     @classmethod
     def from_env(cls) -> "LidarConfig":
-        url = os.getenv("LIDAR_INGEST_URL")
+        url = os.getenv("LIDAR_INGEST_URL") or _DEFAULT_URL
         token = os.getenv("LIDAR_INGEST_TOKEN")
         # имя источника: явное LIDAR_PROJECT, иначе имя Railway-сервиса, иначе unknown
         project = (

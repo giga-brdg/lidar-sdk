@@ -24,7 +24,7 @@ from __future__ import annotations
 from .client import LidarClient
 from .config import LidarConfig
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 # дефолтный клиент, сконфигурированный из окружения продукта
 default_client = LidarClient(LidarConfig.from_env())
